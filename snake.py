@@ -51,7 +51,15 @@ def main():
     clock = pygame.time.Clock()
     font = pygame.font.SysFont(None, 30)
 
-    
+    def reset():
+        # Start snake in middle, length 3, moving right
+        start_x = GRID_W // 2
+        start_y = GRID_H // 2
+        snake = [(start_x - i, start_y) for i in range(3)]  # head is snake[0]
+        direction = RIGHT
+        food = random_food_position(snake)
+        score = 0
+        return snake, direction, food, score
 
     snake, direction, food, score = reset()
     game_over = False
